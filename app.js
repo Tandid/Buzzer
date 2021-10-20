@@ -14,7 +14,9 @@ app.set("views", "views");
 app.use(express.static(path.join(__dirname, "public")));
 
 const loginRoute = require("./routes/loginRoutes");
+const registerRoute = require("./routes/registerRoutes");
 app.use("/login", loginRoute);
+app.use("/register", registerRoute);
 
 app.get("/", middleware.requireLogin, (req, res, next) => {
   const payload = {
