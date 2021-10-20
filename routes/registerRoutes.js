@@ -36,7 +36,8 @@ router.post("/", async (req, res, next) => {
       let data = req.body;
       data.password = await bcrypt.hash(password, 10);
       User.create(data).then(() => {
-        console.log(user);
+        req.session.user = user;
+        return res.redirect("/");
       });
     } else {
       if (email == user.email) {
