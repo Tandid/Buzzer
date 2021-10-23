@@ -1,8 +1,8 @@
 $("#postTextarea").keyup((event) => {
-  let textbox = $(event.target);
-  let value = textbox.val().trim();
+  var textbox = $(event.target);
+  var value = textbox.val().trim();
 
-  let submitButton = $("#submitPostButton");
+  var submitButton = $("#submitPostButton");
 
   if (submitButton.length == 0) return alert("No submit button found");
 
@@ -14,24 +14,26 @@ $("#postTextarea").keyup((event) => {
   submitButton.prop("disabled", false);
 });
 
-$("#submitPostButton").click((event) => {
-  let button = $(event.target);
-  let textbox = $("#postTextarea");
+$("#submitPostButton").click(() => {
+  var button = $(event.target);
+  var textbox = $("#postTextarea");
 
-  let data = {
+  var data = {
     content: textbox.val(),
   };
 
   $.post("/api/posts", data, (postData) => {
-    let html = createPostHtml(postData);
+    var html = createPostHtml(postData);
     $(".postsContainer").prepend(html);
     textbox.val("");
-    button.prop("dsiabled", true);
+    button.prop("disabled", true);
   });
 });
 
 function createPostHtml(postData) {
   var postedBy = postData.postedBy;
+  var displayName = postedBy.firstName + " " + postedBy.lastName;
+  var timestamp = postData.createdAt;
 
   return `<div class='post'>
 
@@ -41,11 +43,29 @@ function createPostHtml(postData) {
                     </div>
                     <div class='postContentContainer'>
                         <div class='header'>
+                            <a href='/profile/${postedBy.username}' class='displayName'>${displayName}</a>
+                            <span class='username'>@${postedBy.username}</span>
+                            <span class='date'>${timestamp}</span>
                         </div>
                         <div class='postBody'>
                             <span>${postData.content}</span>
                         </div>
                         <div class='postFooter'>
+                            <div class='postButtonContainer'>
+                                <button>
+                                    <i class='far fa-comment'></i>
+                                </button>
+                            </div>
+                            <div class='postButtonContainer'>
+                                <button>
+                                    <i class='fas fa-retweet'></i>
+                                </button>
+                            </div>
+                            <div class='postButtonContainer'>
+                                <button>
+                                    <i class='far fa-heart'></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
