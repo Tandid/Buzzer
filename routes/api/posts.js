@@ -10,8 +10,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 router.get("/", (req, res, next) => {
   Post.find()
     .populate("postedBy")
+    .populate("retweetData")
     .sort({ createdAt: -1 })
-    .then((results) => res.status(200).send(results))
+    .then(async (results) => {
+      results = await User.populate(results, { path: "retweetData.postedBy" });
+      res.status(200).send(results);
+    })
     .catch((error) => {
       console.log(error);
       res.sendStatus(400);
@@ -99,6 +103,7 @@ router.post("/:id/retweet", async (req, res, next) => {
     );
   }
 
+  // Insert user like
   req.session.user = await User.findByIdAndUpdate(
     userId,
     { [option]: { retweets: repost._id } },
@@ -108,6 +113,7 @@ router.post("/:id/retweet", async (req, res, next) => {
     res.sendStatus(400);
   });
 
+  // Insert post like
   var post = await Post.findByIdAndUpdate(
     postId,
     { [option]: { retweetUsers: userId } },
