@@ -16,6 +16,10 @@ $(document).ready(() => {
 
     var messagesHtml = messages.join("");
     addMessagesHtmlToPage(messagesHtml);
+    scrollToBottom(false);
+
+    $(".loadingSpinnerContainer").remove();
+    $(".chatContainer").css("visibility", "visible");
   });
 });
 
@@ -49,8 +53,6 @@ $(".inputTextbox").keydown((event) => {
 
 function addMessagesHtmlToPage(html) {
   $(".chatMessages").append(html);
-
-  // TODO: SCROLL TO BOTTOM
 }
 
 function messageSubmitted() {
@@ -87,6 +89,7 @@ function addChatMessageHtml(message) {
   var messageDiv = createMessageHtml(message, null, "");
 
   addMessagesHtmlToPage(messageDiv);
+  scrollToBottom(true);
 }
 
 function createMessageHtml(message, nextMessage, lastSenderId) {
@@ -133,4 +136,15 @@ function createMessageHtml(message, nextMessage, lastSenderId) {
                   </span>
               </div>
           </li>`;
+}
+
+function scrollToBottom(animated) {
+  var container = $(".chatMessages");
+  var scrollHeight = container[0].scrollHeight;
+
+  if (animated) {
+    container.animate({ scrollTop: scrollHeight }, "slow");
+  } else {
+    container.scrollTop(scrollHeight);
+  }
 }
