@@ -72,8 +72,8 @@ function getChatByUserId(userLoggedInId, otherUserId) {
       users: {
         $size: 2,
         $all: [
-          { $elemMatch: { $eq: mongoose.Types.ObjectId(userLoggedInId) } },
-          { $elemMatch: { $eq: mongoose.Types.ObjectId(otherUserId) } },
+          { $elemMatch: { $eq: userLoggedInId } },
+          { $elemMatch: { $eq: otherUserId } },
         ],
       },
     },
