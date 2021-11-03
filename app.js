@@ -74,4 +74,5 @@ io.on("connection", (socket) => {
   });
 
   socket.on("join room", (room) => socket.join(room));
+  socket.on("typing", (room) => socket.in(room).emit("typing"));
 });
