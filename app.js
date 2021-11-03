@@ -11,6 +11,8 @@ const server = app.listen(port, () =>
   console.log("Server listening on port " + port)
 );
 
+const io = require("socket.io")(server, { pingTimeout: 60000 });
+
 app.set("view engine", "pug");
 app.set("views", "views");
 
@@ -63,4 +65,8 @@ app.get("/", middleware.requireLogin, (req, res, next) => {
   };
 
   res.status(200).render("home", payload);
+});
+
+io.on("connection", (socket) => {
+  console.log("connected to socket io");
 });
