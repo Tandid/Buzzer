@@ -227,7 +227,7 @@ $("#userSearchTextbox").keydown((event) => {
   var textbox = $(event.target);
   var value = textbox.val();
 
-  if (value == "" && event.keyCode == 8) {
+  if (value == "" && (event.which == 8 || event.keyCode == 8)) {
     // remove user from selection
     selectedUsers.pop();
     updateSelectedUsersHtml();
@@ -636,4 +636,12 @@ function getOtherChatUsers(users) {
   if (users.length == 1) return users;
 
   return users.filter((user) => user._id != userLoggedIn._id);
+}
+
+function messageReceived(newMessage) {
+  if ($(".chatContainer").length == 0) {
+    // Show popup notification
+  } else {
+    addChatMessageHtml(newMessage);
+  }
 }
