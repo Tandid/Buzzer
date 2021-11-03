@@ -709,7 +709,7 @@ function refreshNotificationsBadge() {
 function showNotificationPopup(data) {
   var html = createNotificationHtml(data);
   var element = $(html);
-  element.prependTo("#notificationList");
+  element.hide().prependTo("#notificationList").slideDown("fast");
 
   setTimeout(() => element.fadeOut(400), 5000);
 }
