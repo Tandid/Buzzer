@@ -3,6 +3,8 @@ $(document).ready(() => {
     $("#chatName").text(getChatName(data))
   );
 
+  socket.emit("join room", chatId);
+
   $.get(`/api/chats/${chatId}/messages`, (data) => {
     var messages = [];
     var lastSenderId = "";
