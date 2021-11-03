@@ -1,10 +1,10 @@
 $(document).ready(() => {
+  socket.emit("join room", chatId);
+  socket.on("typing", () => $(".typingDots").show());
+
   $.get(`/api/chats/${chatId}`, (data) =>
     $("#chatName").text(getChatName(data))
   );
-
-  socket.emit("join room", chatId);
-  socket.on("typing", () => console.log("user is typing"));
 
   $.get(`/api/chats/${chatId}/messages`, (data) => {
     var messages = [];
