@@ -866,7 +866,7 @@ function createNewsHtml(data) {
   return data.map(({ title, author, url, urlToImage }) => {
     return `
     <div class="newsPostContainer">
-      <div>
+      <div class="newsContent">
       <a href=${url}>${title}</a> 
       <p>${author}</p>
       </div>

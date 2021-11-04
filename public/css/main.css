@@ -204,6 +204,21 @@ button span {
   border-radius: 10px;
 }
 
+.newsContent {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.newsContent a {
+  color: black;
+  font-weight: 400px;
+}
+.newsContent p {
+  color: cornflowerblue;
+  font-size: smaller;
+}
+
 .textareaContainer {
   flex: 1;
   padding-left: var(--spacing);
