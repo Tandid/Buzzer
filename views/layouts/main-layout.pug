@@ -57,9 +57,9 @@ html(lang="en")
                             .navRow
                                 i.fas.fa-sign-out-alt
                                 span Logout
-                        a(href="/")
-                            .navRow    
-                                i.fas.fa-feather
+                        button.tweetButton
+                            .tweetButtonRow    
+                                //- i.fas.fa-feather
                                 span Tweet 
                         
                     .navBottom
@@ -80,32 +80,36 @@ html(lang="en")
 
                     block content
 
-                .exploreSectionContainer.d-none.d-md-block.col-md-2.col-lg-4
-                    
-                    .searchWrapper
-                        .searchBarContainer
-                            i.fas.fa-search
-                            input#searchBox(type="text", name="searchBox", data-search="users", placeholder="Search Twitter")
-                        //-     .resultsContainer
+                .exploreSectionContainer.col-4                   
+                    div
+                        .searchWrapper
+                            .searchBarContainer
+                                i.fas.fa-search
+                                input#searchBox(type="text", name="searchBox", data-search="users", placeholder="Search Twitter")
+                            //-     .resultsContainer
+                            
+                            //- +createPostModals(userLoggedIn)
                         
-                        //- +createPostModals(userLoggedIn)
+                        .newsContainer
+                            h1 What's happening 
+                                button#newsButton Show News
+                            
+                        .linksContainer
+                                h1 Who to Follow
+                                .linkedInRow
+                                    i.fab.fa-linkedin 
+                                    span https://www.linkedin.com/in/tandidalam/
+                                    .followButtonContainer
+                                        a.followButton(href="https://www.linkedin.com/in/tandidalam/" target="_blank") Follow
+                                .gitHubRow        
+                                    i.fab.fa-github 
+                                    span https://github.com/Tandid
+                                    .followButtonContainer 
+                                        a.followButton(href="https://github.com/Tandid" target="_blank") Follow 
                     
-                    .newsContainer
-                        h1 What's happening 
-                        button#newsButton Show News
-                        
-                    .linksContainer
-                            h1 Who to Follow
-                            .linkedInRow
-                                i.fab.fa-linkedin 
-                                span https://www.linkedin.com/in/tandidalam/
-                                .followButtonContainer
-                                    a.followButton(href="https://www.linkedin.com/in/tandidalam/" target="_blank") Follow
-                            .gitHubRow        
-                                i.fab.fa-github 
-                                span https://github.com/Tandid
-                                .followButtonContainer 
-                                    a.followButton(href="https://github.com/Tandid" target="_blank") Follow 
+                    a.chatBoxMessageContainer(href="/messages")
+                        span Messages
+                        i.fas.fa-chevron-up
                                   
                                    
                                     

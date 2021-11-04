@@ -44,17 +44,33 @@ h1 {
   margin: 0;
 }
 
-nav {
+nav,
+.exploreSectionContainer {
   display: flex;
   flex-direction: column;
   height: 100%;
   justify-content: space-between;
+  min-width: 500px;
+  max-width: 500px;
+}
+
+.chatBoxMessageContainer {
+  display: flex;
+  border-top-left-radius: 20px;
+  background-color: white;
+  border-top-right-radius: 20px;
+  justify-content: space-between;
+  padding: 15px;
+  font-weight: 700;
+  align-items: center;
+  border: solid 1px black;
 }
 
 .navTop {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-top: 10px;
 }
 
 .navRow {
@@ -73,17 +89,33 @@ nav {
 }
 
 nav a {
-  padding: 10px;
+  padding: 5px;
   font-size: 30px;
   padding-right: 20px;
   padding-left: 20px;
   color: #212529;
   position: relative;
+  margin-top: 7.5px;
+  margin-bottom: 7.5px;
+}
+
+.tweetButton {
+  padding: 5px;
+  font-size: 25px;
+  color: white;
+  position: relative;
+  background-color: #1fa2f1;
+  border-radius: 25px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.tweetButton:hover {
+  background-color: #9bd1f9;
 }
 
 nav a:hover {
-  background-color: var(--buttonHoverBg);
-  color: var(--blue);
+  background-color: whitesmoke;
   border-radius: 25px;
 }
 
@@ -232,6 +264,10 @@ button span {
   border-radius: 20px;
 }
 
+.newsContainer h1 {
+  padding: 15px;
+}
+
 .newsPostContainer {
   display: flex;
   justify-content: space-between;
@@ -239,7 +275,7 @@ button span {
 }
 
 .newsPostContainer:hover {
-  background-color: var(--blueLight);
+  background-color: lightgray;
   border-radius: 20px;
 }
 

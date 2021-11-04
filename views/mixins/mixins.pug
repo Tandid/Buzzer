@@ -37,7 +37,7 @@ mixin createDeletePostModal()
                 .modal-body
                     p You won't be able to delete this.
                 .modal-footer
-                    button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+                    button.btn.btn-secondary(type='button', data-dismiss='modal') Cancel
                     button#deletePostButton.btn.btn-primary(type='button') Delete
 
 mixin createPostModals(userLoggedIn)
@@ -116,7 +116,7 @@ mixin createUnpinPostModal()
                     p This post will be unpinned.
                 .modal-footer
                     button.btn.btn-secondary(type='button', data-dismiss='modal') Cancel
-                    button#unpinPostButton.btn.btn-primary(type='button') Pin
+                    button#unpinPostButton.btn.btn-primary(type='button') Unpin
 
 mixin createChatImage(chatData, userLoggedIn)
     if(!chatData)
