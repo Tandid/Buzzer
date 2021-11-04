@@ -80,14 +80,18 @@ html(lang="en")
                     block content
 
                 .exploreSectionContainer.d-none.d-md-block.col-md-2.col-lg-4
-                    .searchBarContainer
-                        i.fas.fa-search
-                        input#searchBox(type="text", name="searchBox", data-search="users", placeholder="Search Twitter")
-                        .resultsContainer
-                    +createPostModals(userLoggedIn)
+                    
+                    .searchWrapper
+                        .searchBarContainer
+                            i.fas.fa-search
+                            input#searchBox(type="text", name="searchBox", data-search="users", placeholder="Search Twitter")
+                        //-     .resultsContainer
+                        
+                        //- +createPostModals(userLoggedIn)
                     
                     .newsContainer
-                        h1 News will show up here 
+                        button#newsButton News
+                        
                     nav.col-2
                         .navTop
                             a.blue(href="https://www.linkedin.com/in/tandidalam/") 

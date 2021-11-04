@@ -8,6 +8,21 @@ $(document).ready(() => {
   refreshNotificationsBadge();
 });
 
+$("#newsButton").click(async () => {
+  const apiKey = "d895122806794e81878383842397320d";
+
+  var url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`;
+
+  var req = new Request(url);
+
+  let data = await fetch(req).then(function (response) {
+    return response.json();
+  });
+  let topArticles = data.articles.slice(0, 4);
+  let html = createNewsHtml(topArticles);
+  $("#newsButton").append(html);
+});
+
 $("#postTextarea, #replyTextarea").keyup((event) => {
   let textbox = $(event.target);
   let value = textbox.val().trim();
@@ -526,7 +541,9 @@ function outputPosts(results, container) {
   });
 
   if (results.length == 0) {
-    container.append("<span class='noResults'>Nothing to show.</span>");
+    container.append(
+      "<span class='noResults'>There are no posts to show. Follow people or create your very first post!.</span>"
+    );
   }
 }
 
@@ -843,4 +860,19 @@ function getUserChatImageElement(user) {
   }
 
   return `<img src='${user.profilePic}' alt='User's profile pic'>`;
+}
+
+function createNewsHtml(data) {
+  return data.map(({ title, author, url, urlToImage }) => {
+    return `
+    <div class="newsPostContainer">
+      <div>
+      <a href=${url}>${title}</a> 
+      <p>${author}</p>
+      </div>
+      <div class="newsImageContainer">
+        <img  src='${urlToImage}' alt='News Image'>
+      </div>
+    </div>`;
+  });
 }

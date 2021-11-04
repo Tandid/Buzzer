@@ -177,6 +177,33 @@ button span {
   background-color: white;
 }
 
+.newsContainer {
+  background-color: whitesmoke;
+  border-radius: 20px;
+}
+
+.newsPostContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.newsPostContainer:hover {
+  background-color: var(--blueLight);
+  border-radius: 20px;
+}
+
+.newsImageContainer {
+  width: 100px;
+  height: 100px;
+}
+
+.newsImageContainer img {
+  width: 100px;
+  height: 90px;
+  border-radius: 10px;
+}
+
 .textareaContainer {
   flex: 1;
   padding-left: var(--spacing);
