@@ -936,6 +936,7 @@ button span {
   align-items: center;
   justify-content: center;
   visibility: hidden;
+  left: 35px;
 }
 
 #notificationBadge.active,
