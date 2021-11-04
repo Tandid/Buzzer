@@ -269,6 +269,9 @@ button span {
   padding: 15px;
 }
 
+.news {
+  padding: 0 10px 10px 10px;
+}
 .newsPostContainer {
   display: flex;
   justify-content: space-between;
@@ -337,6 +340,10 @@ button span {
   cursor: pointer;
   border-bottom: 1px solid var(--lightGrey);
   flex-shrink: 0;
+}
+
+.post:hover {
+  background-color: whitesmoke;
 }
 
 .mainContentContainer {

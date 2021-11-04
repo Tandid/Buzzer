@@ -8,7 +8,7 @@ $(document).ready(() => {
   refreshNotificationsBadge();
 });
 
-$("#newsButton").click(async () => {
+$(document).ready(async () => {
   const apiKey = "d895122806794e81878383842397320d";
 
   var url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`;
@@ -20,7 +20,7 @@ $("#newsButton").click(async () => {
   });
   let topArticles = data.articles.slice(0, 4);
   let html = createNewsHtml(topArticles);
-  $("#newsButton").append(html);
+  $(".news").append(html);
 });
 
 $("#postTextarea, #replyTextarea").keyup((event) => {
