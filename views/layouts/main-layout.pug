@@ -90,16 +90,23 @@ html(lang="en")
                         //- +createPostModals(userLoggedIn)
                     
                     .newsContainer
-                        button#newsButton What's happening
+                        h1 What's happening 
+                        button#newsButton Show News
                         
-                    nav.col-2
-                        .navTop
-                            a.blue(href="https://www.linkedin.com/in/tandidalam/") 
-                                .navRow
-                                    i.fab.fa-linkedin
-                            a(href="https://github.com/Tandid")
-                                .navRow        
-                                    i.fab.fa-github
+                    .linksContainer
+                            h1 Who to Follow
+                            .linkedInRow
+                                i.fab.fa-linkedin 
+                                span https://www.linkedin.com/in/tandidalam/
+                                .followButtonContainer
+                                    a.followButton(href="https://www.linkedin.com/in/tandidalam/" target="_blank") Follow
+                            .gitHubRow        
+                                i.fab.fa-github 
+                                span https://github.com/Tandid
+                                .followButtonContainer 
+                                    a.followButton(href="https://github.com/Tandid" target="_blank") Follow 
+                                  
+                                   
                                     
                     
         #notificationList

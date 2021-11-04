@@ -867,7 +867,7 @@ function createNewsHtml(data) {
     return `
     <div class="newsPostContainer">
       <div class="newsContent">
-      <a href=${url}>${title}</a> 
+      <a href=${url} target="_blank">${title} </a> 
       <p>${author}</p>
       </div>
       <div class="newsImageContainer">
