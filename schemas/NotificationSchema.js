@@ -18,7 +18,7 @@ NotificationSchema.statics.insertNotification = async (
   notificationType,
   entityId
 ) => {
-  var data = {
+  let data = {
     userTo: userTo,
     userFrom: userFrom,
     notificationType: notificationType,
@@ -28,5 +28,5 @@ NotificationSchema.statics.insertNotification = async (
   return Notification.create(data).catch((error) => console.log(error));
 };
 
-var Notification = mongoose.model("Notification", NotificationSchema);
+let Notification = mongoose.model("Notification", NotificationSchema);
 module.exports = Notification;

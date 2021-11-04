@@ -1,5 +1,5 @@
-var typing = false;
-var lastTypingTime;
+let typing = false;
+let lastTypingTime;
 
 $(document).ready(() => {
   socket.emit("join room", chatId);
@@ -11,17 +11,17 @@ $(document).ready(() => {
   );
 
   $.get(`/api/chats/${chatId}/messages`, (data) => {
-    var messages = [];
-    var lastSenderId = "";
+    let messages = [];
+    let lastSenderId = "";
 
     data.forEach((message, index) => {
-      var html = createMessageHtml(message, data[index + 1], lastSenderId);
+      let html = createMessageHtml(message, data[index + 1], lastSenderId);
       messages.push(html);
 
       lastSenderId = message.sender._id;
     });
 
-    var messagesHtml = messages.join("");
+    let messagesHtml = messages.join("");
     addMessagesHtmlToPage(messagesHtml);
     scrollToBottom(false);
     markAllMessagesAsRead();
@@ -32,7 +32,7 @@ $(document).ready(() => {
 });
 
 $("#chatNameButton").click(() => {
-  var name = $("#chatNameTextbox").val().trim();
+  let name = $("#chatNameTextbox").val().trim();
 
   $.ajax({
     url: "/api/chats/" + chatId,
@@ -70,11 +70,11 @@ function updateTyping() {
   }
 
   lastTypingTime = new Date().getTime();
-  var timerLength = 3000;
+  let timerLength = 3000;
 
   setTimeout(() => {
-    var timeNow = new Date().getTime();
-    var timeDiff = timeNow - lastTypingTime;
+    let timeNow = new Date().getTime();
+    let timeDiff = timeNow - lastTypingTime;
 
     if (timeDiff >= timerLength && typing) {
       socket.emit("stop typing", chatId);
@@ -88,7 +88,7 @@ function addMessagesHtmlToPage(html) {
 }
 
 function messageSubmitted() {
-  var content = $(".inputTextbox").val().trim();
+  let content = $(".inputTextbox").val().trim();
 
   if (content != "") {
     sendMessage(content);
@@ -124,26 +124,26 @@ function addChatMessageHtml(message) {
     return;
   }
 
-  var messageDiv = createMessageHtml(message, null, "");
+  let messageDiv = createMessageHtml(message, null, "");
 
   addMessagesHtmlToPage(messageDiv);
   scrollToBottom(true);
 }
 
 function createMessageHtml(message, nextMessage, lastSenderId) {
-  var sender = message.sender;
-  var senderName = sender.firstName + " " + sender.lastName;
+  let sender = message.sender;
+  let senderName = sender.firstName + " " + sender.lastName;
 
-  var currentSenderId = sender._id;
-  var nextSenderId = nextMessage != null ? nextMessage.sender._id : "";
+  let currentSenderId = sender._id;
+  let nextSenderId = nextMessage != null ? nextMessage.sender._id : "";
 
-  var isFirst = lastSenderId != currentSenderId;
-  var isLast = nextSenderId != currentSenderId;
+  let isFirst = lastSenderId != currentSenderId;
+  let isLast = nextSenderId != currentSenderId;
 
-  var isMine = message.sender._id == userLoggedIn._id;
-  var liClassName = isMine ? "mine" : "theirs";
+  let isMine = message.sender._id == userLoggedIn._id;
+  let liClassName = isMine ? "mine" : "theirs";
 
-  var nameElement = "";
+  let nameElement = "";
   if (isFirst) {
     liClassName += " first";
 
@@ -152,13 +152,13 @@ function createMessageHtml(message, nextMessage, lastSenderId) {
     }
   }
 
-  var profileImage = "";
+  let profileImage = "";
   if (isLast) {
     liClassName += " last";
     profileImage = `<img src='${sender.profilePic}'>`;
   }
 
-  var imageContainer = "";
+  let imageContainer = "";
   if (!isMine) {
     imageContainer = `<div class='imageContainer'>
                                 ${profileImage}
@@ -177,8 +177,8 @@ function createMessageHtml(message, nextMessage, lastSenderId) {
 }
 
 function scrollToBottom(animated) {
-  var container = $(".chatMessages");
-  var scrollHeight = container[0].scrollHeight;
+  let container = $(".chatMessages");
+  let scrollHeight = container[0].scrollHeight;
 
   if (animated) {
     container.animate({ scrollTop: scrollHeight }, "slow");

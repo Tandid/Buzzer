@@ -5,8 +5,8 @@ block content
         span.errorMessage Check the url you are trying to access
     else  
         script.
-            var profileUserId = '!{profileUser._id}';
-            var selectedTab = '!{selectedTab}';
+            let profileUserId = '!{profileUser._id}';
+            let selectedTab = '!{selectedTab}';
 
         - followersCount = profileUser.followers.length
         - followingCount = profileUser.following.length
@@ -33,7 +33,7 @@ block content
                     a.profileButton(href=`/messages/${profileUser._id}`)
                         i.fas.fa-envelope
 
-                    - var profileUserId = profileUser._id.toString();
+                    - let profileUserId = profileUser._id.toString();
                     - if(userLoggedIn.following && userLoggedIn.following.includes(profileUserId))
                         +createFollowButton(profileUser, true)
                     - else

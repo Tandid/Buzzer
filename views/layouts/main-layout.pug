@@ -11,7 +11,7 @@ html(lang="en")
         link(rel="stylesheet", href="/css/main.css")
     body
         script.
-            var userLoggedIn = !{userLoggedInJs};
+            let userLoggedIn = !{userLoggedInJs};
         .wrapper
             .row
                 nav.col-2
@@ -25,7 +25,7 @@ html(lang="en")
                                 span Home
                         a(href="/search")
                             .navRow    
-                                i.fas.fa-search
+                                i.fas.fa-hashtag
                                 span Explore
                         a(href="/notifications")
                             .navRow    
@@ -79,7 +79,25 @@ html(lang="en")
 
                     block content
 
-                .d-none.d-md-block.col-md-2.col-lg-4
+                .exploreSectionContainer.d-none.d-md-block.col-md-2.col-lg-4
+                    .searchBarContainer
+                        i.fas.fa-search
+                        input#searchBox(type="text", name="searchBox", data-search="users", placeholder="Search Twitter")
+                        .resultsContainer
+                    +createPostModals(userLoggedIn)
+                    
+                    .newsContainer
+                        h1 News will show up here 
+                    nav.col-2
+                        .navTop
+                            a.blue(href="https://www.linkedin.com/in/tandidalam/") 
+                                .navRow
+                                    i.fab.fa-linkedin
+                            a(href="https://github.com/Tandid")
+                                .navRow        
+                                    i.fab.fa-github
+                                    
+                    
         #notificationList
 
         script(src='https://kit.fontawesome.com/85404227e2.js' crossorigin='anonymous')
@@ -93,4 +111,5 @@ html(lang="en")
 
         script(src="/js/common.js")
         script(src="/js/clientSocket.js")
+        script(src="/js/search.js")
 

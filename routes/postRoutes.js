@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 const User = require("../schemas/UserSchema");
 
 router.get("/:id", (req, res, next) => {
-  var payload = {
+  let payload = {
     pageTitle: "View post",
     userLoggedIn: req.session.user,
     userLoggedInJs: JSON.stringify(req.session.user),

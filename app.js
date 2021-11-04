@@ -62,7 +62,7 @@ app.use("/api/messages", messagesApiRoute);
 app.use("/api/notifications", notificationsApiRoute);
 
 app.get("/", middleware.requireLogin, (req, res, next) => {
-  var payload = {
+  let payload = {
     pageTitle: "Home",
     userLoggedIn: req.session.user,
     userLoggedInJs: JSON.stringify(req.session.user),
@@ -85,7 +85,7 @@ io.on("connection", (socket) => {
   );
 
   socket.on("new message", (newMessage) => {
-    var chat = newMessage.chat;
+    let chat = newMessage.chat;
 
     if (!chat.users) return console.log("Chat.users not defined");
 

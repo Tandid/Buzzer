@@ -16,7 +16,7 @@ router.post("/", async (req, res, next) => {
     return res.sendStatus(400);
   }
 
-  var newMessage = {
+  let newMessage = {
     sender: req.session.user._id,
     content: req.body.content,
     chat: req.body.chatId,
@@ -28,7 +28,7 @@ router.post("/", async (req, res, next) => {
       message = await message.populate("chat");
       message = await User.populate(message, { path: "chat.users" });
 
-      var chat = await Chat.findByIdAndUpdate(req.body.chatId, {
+      let chat = await Chat.findByIdAndUpdate(req.body.chatId, {
         latestMessage: message,
       }).catch((error) => console.log(error));
 

@@ -15,7 +15,7 @@ router.post("/", async (req, res, next) => {
     return res.sendStatus(400);
   }
 
-  var users = JSON.parse(req.body.users);
+  let users = JSON.parse(req.body.users);
 
   if (users.length == 0) {
     console.log("Users array is empty");
@@ -24,7 +24,7 @@ router.post("/", async (req, res, next) => {
 
   users.push(req.session.user);
 
-  var chatData = {
+  let chatData = {
     users: users,
     isGroupChat: true,
   };

@@ -1,7 +1,7 @@
 // Globals
-var cropper;
-var timer;
-var selectedUsers = [];
+let cropper;
+let timer;
+let selectedUsers = [];
 
 $(document).ready(() => {
   refreshMessagesBadge();
@@ -9,12 +9,12 @@ $(document).ready(() => {
 });
 
 $("#postTextarea, #replyTextarea").keyup((event) => {
-  var textbox = $(event.target);
-  var value = textbox.val().trim();
+  let textbox = $(event.target);
+  let value = textbox.val().trim();
 
-  var isModal = textbox.parents(".modal").length == 1;
+  let isModal = textbox.parents(".modal").length == 1;
 
-  var submitButton = isModal ? $("#submitReplyButton") : $("#submitPostButton");
+  let submitButton = isModal ? $("#submitReplyButton") : $("#submitPostButton");
 
   if (submitButton.length == 0) return alert("No submit button found");
 
@@ -27,17 +27,17 @@ $("#postTextarea, #replyTextarea").keyup((event) => {
 });
 
 $("#submitPostButton, #submitReplyButton").click(() => {
-  var button = $(event.target);
+  let button = $(event.target);
 
-  var isModal = button.parents(".modal").length == 1;
-  var textbox = isModal ? $("#replyTextarea") : $("#postTextarea");
+  let isModal = button.parents(".modal").length == 1;
+  let textbox = isModal ? $("#replyTextarea") : $("#postTextarea");
 
-  var data = {
+  let data = {
     content: textbox.val(),
   };
 
   if (isModal) {
-    var id = button.data().id;
+    let id = button.data().id;
     if (id == null) return alert("Button id is null");
     data.replyTo = id;
   }
@@ -47,7 +47,7 @@ $("#submitPostButton, #submitReplyButton").click(() => {
       emitNotification(postData.replyTo.postedBy);
       location.reload();
     } else {
-      var html = createPostHtml(postData);
+      let html = createPostHtml(postData);
       $(".postsContainer").prepend(html);
       textbox.val("");
       button.prop("disabled", true);
@@ -56,8 +56,8 @@ $("#submitPostButton, #submitReplyButton").click(() => {
 });
 
 $("#replyModal").on("show.bs.modal", (event) => {
-  var button = $(event.relatedTarget);
-  var postId = getPostIdFromElement(button);
+  let button = $(event.relatedTarget);
+  let postId = getPostIdFromElement(button);
   $("#submitReplyButton").data("id", postId);
 
   $.get("/api/posts/" + postId, (results) => {
@@ -70,25 +70,25 @@ $("#replyModal").on("hidden.bs.modal", () =>
 );
 
 $("#deletePostModal").on("show.bs.modal", (event) => {
-  var button = $(event.relatedTarget);
-  var postId = getPostIdFromElement(button);
+  let button = $(event.relatedTarget);
+  let postId = getPostIdFromElement(button);
   $("#deletePostButton").data("id", postId);
 });
 
 $("#confirmPinModal").on("show.bs.modal", (event) => {
-  var button = $(event.relatedTarget);
-  var postId = getPostIdFromElement(button);
+  let button = $(event.relatedTarget);
+  let postId = getPostIdFromElement(button);
   $("#pinPostButton").data("id", postId);
 });
 
 $("#unpinModal").on("show.bs.modal", (event) => {
-  var button = $(event.relatedTarget);
-  var postId = getPostIdFromElement(button);
+  let button = $(event.relatedTarget);
+  let postId = getPostIdFromElement(button);
   $("#unpinPostButton").data("id", postId);
 });
 
 $("#deletePostButton").click((event) => {
-  var postId = $(event.target).data("id");
+  let postId = $(event.target).data("id");
 
   $.ajax({
     url: `/api/posts/${postId}`,
@@ -105,7 +105,7 @@ $("#deletePostButton").click((event) => {
 });
 
 $("#pinPostButton").click((event) => {
-  var postId = $(event.target).data("id");
+  let postId = $(event.target).data("id");
 
   $.ajax({
     url: `/api/posts/${postId}`,
@@ -123,7 +123,7 @@ $("#pinPostButton").click((event) => {
 });
 
 $("#unpinPostButton").click((event) => {
-  var postId = $(event.target).data("id");
+  let postId = $(event.target).data("id");
 
   $.ajax({
     url: `/api/posts/${postId}`,
@@ -142,9 +142,9 @@ $("#unpinPostButton").click((event) => {
 
 $("#filePhoto").change(function () {
   if (this.files && this.files[0]) {
-    var reader = new FileReader();
+    let reader = new FileReader();
     reader.onload = (e) => {
-      var image = document.getElementById("imagePreview");
+      let image = document.getElementById("imagePreview");
       image.src = e.target.result;
 
       if (cropper !== undefined) {
@@ -164,9 +164,9 @@ $("#filePhoto").change(function () {
 
 $("#coverPhoto").change(function () {
   if (this.files && this.files[0]) {
-    var reader = new FileReader();
+    let reader = new FileReader();
     reader.onload = (e) => {
-      var image = document.getElementById("coverPreview");
+      let image = document.getElementById("coverPreview");
       image.src = e.target.result;
 
       if (cropper !== undefined) {
@@ -183,7 +183,7 @@ $("#coverPhoto").change(function () {
 });
 
 $("#imageUploadButton").click(() => {
-  var canvas = cropper.getCroppedCanvas();
+  let canvas = cropper.getCroppedCanvas();
 
   if (canvas == null) {
     alert("Could not upload image. Make sure it is an image file.");
@@ -191,7 +191,7 @@ $("#imageUploadButton").click(() => {
   }
 
   canvas.toBlob((blob) => {
-    var formData = new FormData();
+    let formData = new FormData();
     formData.append("croppedImage", blob);
 
     $.ajax({
@@ -206,7 +206,7 @@ $("#imageUploadButton").click(() => {
 });
 
 $("#coverPhotoButton").click(() => {
-  var canvas = cropper.getCroppedCanvas();
+  let canvas = cropper.getCroppedCanvas();
 
   if (canvas == null) {
     alert("Could not upload image. Make sure it is an image file.");
@@ -214,7 +214,7 @@ $("#coverPhotoButton").click(() => {
   }
 
   canvas.toBlob((blob) => {
-    var formData = new FormData();
+    let formData = new FormData();
     formData.append("croppedImage", blob);
 
     $.ajax({
@@ -230,8 +230,8 @@ $("#coverPhotoButton").click(() => {
 
 $("#userSearchTextbox").keydown((event) => {
   clearTimeout(timer);
-  var textbox = $(event.target);
-  var value = textbox.val();
+  let textbox = $(event.target);
+  let value = textbox.val();
 
   if (value == "" && (event.which == 8 || event.keyCode == 8)) {
     // remove user from selection
@@ -258,7 +258,7 @@ $("#userSearchTextbox").keydown((event) => {
 });
 
 $("#createChatButton").click(() => {
-  var data = JSON.stringify(selectedUsers);
+  let data = JSON.stringify(selectedUsers);
 
   $.post("/api/chats", { users: data }, (chat) => {
     if (!chat || !chat._id) return alert("Invalid response from server.");
@@ -268,8 +268,8 @@ $("#createChatButton").click(() => {
 });
 
 $(document).on("click", ".likeButton", (event) => {
-  var button = $(event.target);
-  var postId = getPostIdFromElement(button);
+  let button = $(event.target);
+  let postId = getPostIdFromElement(button);
 
   if (postId === undefined) return;
 
@@ -290,8 +290,8 @@ $(document).on("click", ".likeButton", (event) => {
 });
 
 $(document).on("click", ".retweetButton", (event) => {
-  var button = $(event.target);
-  var postId = getPostIdFromElement(button);
+  let button = $(event.target);
+  let postId = getPostIdFromElement(button);
 
   if (postId === undefined) return;
 
@@ -312,8 +312,8 @@ $(document).on("click", ".retweetButton", (event) => {
 });
 
 $(document).on("click", ".post", (event) => {
-  var element = $(event.target);
-  var postId = getPostIdFromElement(element);
+  let element = $(event.target);
+  let postId = getPostIdFromElement(element);
 
   if (postId !== undefined && !element.is("button")) {
     window.location.href = "/posts/" + postId;
@@ -321,8 +321,8 @@ $(document).on("click", ".post", (event) => {
 });
 
 $(document).on("click", ".followButton", (e) => {
-  var button = $(e.target);
-  var userId = button.data().user;
+  let button = $(e.target);
+  let userId = button.data().user;
 
   $.ajax({
     url: `/api/users/${userId}/follow`,
@@ -333,7 +333,7 @@ $(document).on("click", ".followButton", (e) => {
         return;
       }
 
-      var difference = 1;
+      let difference = 1;
       if (data.following && data.following.includes(userId)) {
         button.addClass("following");
         button.text("Following");
@@ -344,9 +344,9 @@ $(document).on("click", ".followButton", (e) => {
         difference = -1;
       }
 
-      var followersLabel = $("#followersValue");
+      let followersLabel = $("#followersValue");
       if (followersLabel.length != 0) {
-        var followersText = followersLabel.text();
+        let followersText = followersLabel.text();
         followersText = parseInt(followersText);
         followersLabel.text(followersText + difference);
       }
@@ -355,20 +355,20 @@ $(document).on("click", ".followButton", (e) => {
 });
 
 $(document).on("click", ".notification.active", (e) => {
-  var container = $(e.target);
-  var notificationId = container.data().id;
+  let container = $(e.target);
+  let notificationId = container.data().id;
 
-  var href = container.attr("href");
+  let href = container.attr("href");
   e.preventDefault();
 
-  var callback = () => (window.location = href);
+  let callback = () => (window.location = href);
   markNotificationsAsOpened(notificationId, callback);
 });
 
 function getPostIdFromElement(element) {
-  var isRoot = element.hasClass("post");
-  var rootElement = isRoot == true ? element : element.closest(".post");
-  var postId = rootElement.data().id;
+  let isRoot = element.hasClass("post");
+  let rootElement = isRoot == true ? element : element.closest(".post");
+  let postId = rootElement.data().id;
 
   if (postId === undefined) return alert("Post id undefined");
 
@@ -378,30 +378,30 @@ function getPostIdFromElement(element) {
 function createPostHtml(postData, largeFont = false) {
   if (postData == null) return alert("post object is null");
 
-  var isRetweet = postData.retweetData !== undefined;
-  var retweetedBy = isRetweet ? postData.postedBy.username : null;
+  let isRetweet = postData.retweetData !== undefined;
+  let retweetedBy = isRetweet ? postData.postedBy.username : null;
   postData = isRetweet ? postData.retweetData : postData;
 
-  var postedBy = postData.postedBy;
+  let postedBy = postData.postedBy;
 
   if (postedBy._id === undefined) {
     return console.log("User object not populated");
   }
 
-  var displayName = postedBy.firstName + " " + postedBy.lastName;
-  var timestamp = timeDifference(new Date(), new Date(postData.createdAt));
+  let displayName = postedBy.firstName + " " + postedBy.lastName;
+  let timestamp = timeDifference(new Date(), new Date(postData.createdAt));
 
-  var likeButtonActiveClass = postData.likes.includes(userLoggedIn._id)
+  let likeButtonActiveClass = postData.likes.includes(userLoggedIn._id)
     ? "active"
     : "";
-  var retweetButtonActiveClass = postData.retweetUsers.includes(
+  let retweetButtonActiveClass = postData.retweetUsers.includes(
     userLoggedIn._id
   )
     ? "active"
     : "";
-  var largeFontClass = largeFont ? "largeFont" : "";
+  let largeFontClass = largeFont ? "largeFont" : "";
 
-  var retweetText = "";
+  let retweetText = "";
   if (isRetweet) {
     retweetText = `<span>
                         <i class='fas fa-retweet'></i>
@@ -409,7 +409,7 @@ function createPostHtml(postData, largeFont = false) {
                     </span>`;
   }
 
-  var replyFlag = "";
+  let replyFlag = "";
   if (postData.replyTo && postData.replyTo._id) {
     if (!postData.replyTo._id) {
       return alert("Reply to is not populated");
@@ -417,17 +417,17 @@ function createPostHtml(postData, largeFont = false) {
       return alert("Posted by is not populated");
     }
 
-    var replyToUsername = postData.replyTo.postedBy.username;
+    let replyToUsername = postData.replyTo.postedBy.username;
     replyFlag = `<div class='replyFlag'>
                         Replying to <a href='/profile/${replyToUsername}'>@${replyToUsername}<a>
                     </div>`;
   }
 
-  var buttons = "";
-  var pinnedPostText = "";
+  let buttons = "";
+  let pinnedPostText = "";
   if (postData.postedBy._id == userLoggedIn._id) {
-    var pinnedClass = "";
-    var dataTarget = "#confirmPinModal";
+    let pinnedClass = "";
+    let dataTarget = "#confirmPinModal";
     if (postData.pinned === true) {
       pinnedClass = "active";
       dataTarget = "#unpinModal";
@@ -488,13 +488,13 @@ function createPostHtml(postData, largeFont = false) {
 }
 
 function timeDifference(current, previous) {
-  var msPerMinute = 60 * 1000;
-  var msPerHour = msPerMinute * 60;
-  var msPerDay = msPerHour * 24;
-  var msPerMonth = msPerDay * 30;
-  var msPerYear = msPerDay * 365;
+  let msPerMinute = 60 * 1000;
+  let msPerHour = msPerMinute * 60;
+  let msPerDay = msPerHour * 24;
+  let msPerMonth = msPerDay * 30;
+  let msPerYear = msPerDay * 365;
 
-  var elapsed = current - previous;
+  let elapsed = current - previous;
 
   if (elapsed < msPerMinute) {
     if (elapsed / 1000 < 30) return "Just now";
@@ -521,7 +521,7 @@ function outputPosts(results, container) {
   }
 
   results.forEach((result) => {
-    var html = createPostHtml(result);
+    let html = createPostHtml(result);
     container.append(html);
   });
 
@@ -534,15 +534,15 @@ function outputPostsWithReplies(results, container) {
   container.html("");
 
   if (results.replyTo !== undefined && results.replyTo._id !== undefined) {
-    var html = createPostHtml(results.replyTo);
+    let html = createPostHtml(results.replyTo);
     container.append(html);
   }
 
-  var mainPostHtml = createPostHtml(results.postData, true);
+  let mainPostHtml = createPostHtml(results.postData, true);
   container.append(mainPostHtml);
 
   results.replies.forEach((result) => {
-    var html = createPostHtml(result);
+    let html = createPostHtml(result);
     container.append(html);
   });
 }
@@ -551,7 +551,7 @@ function outputUsers(results, container) {
   container.html("");
 
   results.forEach((result) => {
-    var html = createUserHtml(result, true);
+    let html = createUserHtml(result, true);
     container.append(html);
   });
 
@@ -561,13 +561,13 @@ function outputUsers(results, container) {
 }
 
 function createUserHtml(userData, showFollowButton) {
-  var name = userData.firstName + " " + userData.lastName;
-  var isFollowing =
+  let name = userData.firstName + " " + userData.lastName;
+  let isFollowing =
     userLoggedIn.following && userLoggedIn.following.includes(userData._id);
-  var text = isFollowing ? "Following" : "Follow";
-  var buttonClass = isFollowing ? "followButton following" : "followButton";
+  let text = isFollowing ? "Following" : "Follow";
+  let buttonClass = isFollowing ? "followButton following" : "followButton";
 
-  var followButton = "";
+  let followButton = "";
   if (showFollowButton && userLoggedIn._id != userData._id) {
     followButton = `<div class='followButtonContainer'>
                             <button class='${buttonClass}' data-user='${userData._id}'>${text}</button>
@@ -605,8 +605,8 @@ function outputSelectableUsers(results, container) {
       return;
     }
 
-    var html = createUserHtml(result, false);
-    var element = $(html);
+    let html = createUserHtml(result, false);
+    let element = $(html);
     element.click(() => userSelected(result));
 
     container.append(element);
@@ -626,11 +626,11 @@ function userSelected(user) {
 }
 
 function updateSelectedUsersHtml() {
-  var elements = [];
+  let elements = [];
 
   selectedUsers.forEach((user) => {
-    var name = user.firstName + " " + user.lastName;
-    var userElement = $(`<span class='selectedUser'>${name}</span>`);
+    let name = user.firstName + " " + user.lastName;
+    let userElement = $(`<span class='selectedUser'>${name}</span>`);
     elements.push(userElement);
   });
 
@@ -639,11 +639,11 @@ function updateSelectedUsersHtml() {
 }
 
 function getChatName(chatData) {
-  var chatName = chatData.chatName;
+  let chatName = chatData.chatName;
 
   if (!chatName) {
-    var otherChatUsers = getOtherChatUsers(chatData.users);
-    var namesArray = otherChatUsers.map(
+    let otherChatUsers = getOtherChatUsers(chatData.users);
+    let namesArray = otherChatUsers.map(
       (user) => user.firstName + " " + user.lastName
     );
     chatName = namesArray.join(", ");
@@ -672,7 +672,7 @@ function messageReceived(newMessage) {
 function markNotificationsAsOpened(notificationId = null, callback = null) {
   if (callback == null) callback = () => location.reload();
 
-  var url =
+  let url =
     notificationId != null
       ? `/api/notifications/${notificationId}/markAsOpened`
       : `/api/notifications/markAsOpened`;
@@ -685,7 +685,7 @@ function markNotificationsAsOpened(notificationId = null, callback = null) {
 
 function refreshMessagesBadge() {
   $.get("/api/chats", { unreadOnly: true }, (data) => {
-    var numResults = data.length;
+    let numResults = data.length;
 
     if (numResults > 0) {
       $("#messagesBadge").text(numResults).addClass("active");
@@ -697,7 +697,7 @@ function refreshMessagesBadge() {
 
 function refreshNotificationsBadge() {
   $.get("/api/notifications", { unreadOnly: true }, (data) => {
-    var numResults = data.length;
+    let numResults = data.length;
 
     if (numResults > 0) {
       $("#notificationBadge").text(numResults).addClass("active");
@@ -708,8 +708,8 @@ function refreshNotificationsBadge() {
 }
 
 function showNotificationPopup(data) {
-  var html = createNotificationHtml(data);
-  var element = $(html);
+  let html = createNotificationHtml(data);
+  let element = $(html);
   element.hide().prependTo("#notificationList").slideDown("fast");
 
   setTimeout(() => element.fadeOut(400), 5000);
@@ -720,8 +720,8 @@ function showMessagePopup(data) {
     data.chat.latestMessage = data;
   }
 
-  var html = createChatHtml(data.chat);
-  var element = $(html);
+  let html = createChatHtml(data.chat);
+  let element = $(html);
   element.hide().prependTo("#notificationList").slideDown("fast");
 
   setTimeout(() => element.fadeOut(400), 5000);
@@ -729,7 +729,7 @@ function showMessagePopup(data) {
 
 function outputNotificationList(notifications, container) {
   notifications.forEach((notification) => {
-    var html = createNotificationHtml(notification);
+    let html = createNotificationHtml(notification);
     container.append(html);
   });
 
@@ -739,10 +739,10 @@ function outputNotificationList(notifications, container) {
 }
 
 function createNotificationHtml(notification) {
-  var userFrom = notification.userFrom;
-  var text = getNotificationText(notification);
-  var href = getNotificationUrl(notification);
-  var className = notification.opened ? "" : "active";
+  let userFrom = notification.userFrom;
+  let text = getNotificationText(notification);
+  let href = getNotificationUrl(notification);
+  let className = notification.opened ? "" : "active";
 
   return `<a href='${href}' class='resultListItem notification ${className}' data-id='${notification._id}'>
                 <div class='resultsImageContainer'>
@@ -755,15 +755,15 @@ function createNotificationHtml(notification) {
 }
 
 function getNotificationText(notification) {
-  var userFrom = notification.userFrom;
+  let userFrom = notification.userFrom;
 
   if (!userFrom.firstName || !userFrom.lastName) {
     return alert("user from data not populated");
   }
 
-  var userFromName = `${userFrom.firstName} ${userFrom.lastName}`;
+  let userFromName = `${userFrom.firstName} ${userFrom.lastName}`;
 
-  var text;
+  let text;
 
   if (notification.notificationType == "retweet") {
     text = `${userFromName} retweeted one of your posts`;
@@ -779,7 +779,7 @@ function getNotificationText(notification) {
 }
 
 function getNotificationUrl(notification) {
-  var url = "#";
+  let url = "#";
 
   if (
     notification.notificationType == "retweet" ||
@@ -795,11 +795,11 @@ function getNotificationUrl(notification) {
 }
 
 function createChatHtml(chatData) {
-  var chatName = getChatName(chatData);
-  var image = getChatImageElements(chatData);
-  var latestMessage = getLatestMessage(chatData.latestMessage);
+  let chatName = getChatName(chatData);
+  let image = getChatImageElements(chatData);
+  let latestMessage = getLatestMessage(chatData.latestMessage);
 
-  var activeClass =
+  let activeClass =
     !chatData.latestMessage ||
     chatData.latestMessage.readBy.includes(userLoggedIn._id)
       ? ""
@@ -816,7 +816,7 @@ function createChatHtml(chatData) {
 
 function getLatestMessage(latestMessage) {
   if (latestMessage != null) {
-    var sender = latestMessage.sender;
+    let sender = latestMessage.sender;
     return `${sender.firstName} ${sender.lastName}: ${latestMessage.content}`;
   }
 
@@ -824,10 +824,10 @@ function getLatestMessage(latestMessage) {
 }
 
 function getChatImageElements(chatData) {
-  var otherChatUsers = getOtherChatUsers(chatData.users);
+  let otherChatUsers = getOtherChatUsers(chatData.users);
 
-  var groupChatClass = "";
-  var chatImage = getUserChatImageElement(otherChatUsers[0]);
+  let groupChatClass = "";
+  let chatImage = getUserChatImageElement(otherChatUsers[0]);
 
   if (otherChatUsers.length > 1) {
     groupChatClass = "groupChatImage";

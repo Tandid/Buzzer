@@ -24,11 +24,11 @@ router.get("/new", (req, res, next) => {
 });
 
 router.get("/:chatId", async (req, res, next) => {
-  var userId = req.session.user._id;
-  var chatId = req.params.chatId;
-  var isValidId = mongoose.isValidObjectId(chatId);
+  let userId = req.session.user._id;
+  let chatId = req.params.chatId;
+  let isValidId = mongoose.isValidObjectId(chatId);
 
-  var payload = {
+  let payload = {
     pageTitle: "Chat",
     userLoggedIn: req.session.user,
     userLoggedInJs: JSON.stringify(req.session.user),
@@ -40,14 +40,14 @@ router.get("/:chatId", async (req, res, next) => {
     return res.status(200).render("chatPage", payload);
   }
 
-  var chat = await Chat.findOne({
+  let chat = await Chat.findOne({
     _id: chatId,
     users: { $elemMatch: { $eq: userId } },
   }).populate("users");
 
   if (chat == null) {
     // Check if chat id is really user id
-    var userFound = await User.findById(chatId);
+    let userFound = await User.findById(chatId);
 
     if (userFound != null) {
       // get chat using user id

@@ -11,7 +11,7 @@ const Notification = require("../../schemas/NotificationSchema");
 app.use(bodyParser.urlencoded({ extended: false }));
 
 router.get("/", async (req, res, next) => {
-  var searchObj = {
+  let searchObj = {
     userTo: req.session.user._id,
     notificationType: { $ne: "newMessage" },
   };

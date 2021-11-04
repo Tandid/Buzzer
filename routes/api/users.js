@@ -13,7 +13,7 @@ const Notification = require("../../schemas/NotificationSchema");
 app.use(bodyParser.urlencoded({ extended: false }));
 
 router.get("/", async (req, res, next) => {
-  var searchObj = req.query;
+  let searchObj = req.query;
 
   if (req.query.search !== undefined) {
     searchObj = {
@@ -34,15 +34,15 @@ router.get("/", async (req, res, next) => {
 });
 
 router.put("/:userId/follow", async (req, res, next) => {
-  var userId = req.params.userId;
+  let userId = req.params.userId;
 
-  var user = await User.findById(userId);
+  let user = await User.findById(userId);
 
   if (user == null) return res.sendStatus(404);
 
-  var isFollowing =
+  let isFollowing =
     user.followers && user.followers.includes(req.session.user._id);
-  var option = isFollowing ? "$pull" : "$addToSet";
+  let option = isFollowing ? "$pull" : "$addToSet";
 
   req.session.user = await User.findByIdAndUpdate(
     req.session.user._id,
@@ -105,9 +105,9 @@ router.post(
       return res.sendStatus(400);
     }
 
-    var filePath = `/uploads/images/${req.file.filename}.png`;
-    var tempPath = req.file.path;
-    var targetPath = path.join(__dirname, `../../${filePath}`);
+    let filePath = `/uploads/images/${req.file.filename}.png`;
+    let tempPath = req.file.path;
+    let targetPath = path.join(__dirname, `../../${filePath}`);
 
     fs.rename(tempPath, targetPath, async (error) => {
       if (error != null) {
@@ -134,9 +134,9 @@ router.post(
       return res.sendStatus(400);
     }
 
-    var filePath = `/uploads/images/${req.file.filename}.png`;
-    var tempPath = req.file.path;
-    var targetPath = path.join(__dirname, `../../${filePath}`);
+    let filePath = `/uploads/images/${req.file.filename}.png`;
+    let tempPath = req.file.path;
+    let targetPath = path.join(__dirname, `../../${filePath}`);
 
     fs.rename(tempPath, targetPath, async (error) => {
       if (error != null) {

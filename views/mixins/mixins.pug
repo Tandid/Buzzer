@@ -122,9 +122,9 @@ mixin createChatImage(chatData, userLoggedIn)
     if(!chatData)
         return
 
-    - var i = 0
-    - var maxImagesToShow = 3
-    - var remainingUsers = chatData.users.length - maxImagesToShow
+    - let i = 0
+    - let maxImagesToShow = 3
+    - let remainingUsers = chatData.users.length - maxImagesToShow
     - remainingUsers-- // Remove 1 since we won't show our own image
     
     .chatImagesContainer
