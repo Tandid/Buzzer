@@ -508,6 +508,9 @@ button span {
 .resultsContainer {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  flex-basis: 0;
+  overflow: scroll;
 }
 
 .resultsContainer .user {
