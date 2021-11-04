@@ -15,47 +15,63 @@ html(lang="en")
         .wrapper
             .row
                 nav.col-2
-                    a.blue(href="/") 
-                        .navRow
-                            i.fas.fa-kiwi-bird
-                    a(href="/")
-                        .navRow        
-                            i.fas.fa-home
-                            span Home
-                    a(href="/search")
-                        .navRow    
-                            i.fas.fa-search
-                            span Explore
-                    a(href="/notifications")
-                        .navRow    
-                            i.fas.fa-bell
-                            span#notificationBadge
-                            span Notifications
-                    a(href="/messages")
-                        .navRow
-                            i.fas.fa-envelope
-                            span#messagesBadge
-                            span Messages
-                    a(href="/")
-                        .navRow    
-                            i.fas.fa-bookmark
-                            span Bookmarks
-                    a(href="/")
-                        .navRow    
-                            i.fas.fa-list-alt 
-                            span Lists
-                    a(href="/profile")
-                        .navRow    
-                            i.fas.fa-user
-                            span Profile
-                    a(href="/")
-                        .navRow    
-                            i.fas.fa-ellipsis-h
-                            span More 
-                    a(href="/logout")
-                        .navRow
-                            i.fas.fa-sign-out-alt
-                            span Logout
+                    .navTop
+                        a.blue(href="/") 
+                            .navRow
+                                i.fas.fa-kiwi-bird
+                        a(href="/")
+                            .navRow        
+                                i.fas.fa-home
+                                span Home
+                        a(href="/search")
+                            .navRow    
+                                i.fas.fa-search
+                                span Explore
+                        a(href="/notifications")
+                            .navRow    
+                                i.fas.fa-bell
+                                span#notificationBadge
+                                span Notifications
+                        a(href="/messages")
+                            .navRow
+                                i.fas.fa-envelope
+                                span#messagesBadge
+                                span Messages
+                        a(href="/")
+                            .navRow    
+                                i.fas.fa-bookmark
+                                span Bookmarks
+                        a(href="/")
+                            .navRow    
+                                i.fas.fa-list-alt 
+                                span Lists
+                        a(href="/profile")
+                            .navRow    
+                                i.fas.fa-user
+                                span Profile
+                        a(href="/")
+                            .navRow    
+                                i.fas.fa-ellipsis-h
+                                span More 
+                        a(href="/logout")
+                            .navRow
+                                i.fas.fa-sign-out-alt
+                                span Logout
+                        a(href="/")
+                            .navRow    
+                                i.fas.fa-feather
+                                span Tweet 
+                        a(href="/profile")
+                            .navBottom
+                                .userImageContainer
+                                    img(src=userLoggedIn.profilePic, alt="User profile image")
+                                .userInfo
+                                    span #{userLoggedIn.firstName} #{userLoggedIn.lastName}
+                                    span.username @#{userLoggedIn.username}
+                                i.fas.fa-ellipsis-h
+                    //- .navBottom
+
+                
                 .mainSectionContainer.col-10.col-md-8.col-lg-6
                     .titleContainer
                         h1 #{pageTitle}

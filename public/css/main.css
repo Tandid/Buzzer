@@ -44,7 +44,7 @@ h1 {
   margin: 0;
 }
 
-nav {
+.navTop {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -83,6 +83,27 @@ nav a:hover {
 
 nav a.blue {
   color: var(--blue);
+}
+
+.navBottom {
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navBottom span {
+  font-size: small;
+  font-weight: 500;
+}
+
+.navBottom i {
+  font-size: small;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
 }
 
 .wrapper {
