@@ -1,6 +1,6 @@
 // Globals
 let cropper;
-let timer;
+var timer;
 let selectedUsers = [];
 
 $(document).ready(() => {
