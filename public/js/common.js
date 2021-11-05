@@ -18,7 +18,7 @@ $(document).ready(async () => {
   let data = await fetch(req).then(function (response) {
     return response.json();
   });
-  let topArticles = data.articles.slice(0, 4);
+  let topArticles = data.articles.slice(0, 3);
   let html = createNewsHtml(topArticles);
   $(".news").append(html);
 });
@@ -864,11 +864,19 @@ function getUserChatImageElement(user) {
 
 function createNewsHtml(data) {
   return data.map(({ title, author, url, urlToImage }) => {
+    console.log(author);
     return `
     <div class="newsPostContainer">
       <div class="newsContent">
-      <a href=${url} target="_blank">${title} </a> 
-      <p>${author}</p>
+        <a href=${url} target="_blank">
+        ${title.slice(0, 120)}
+        ${title.length > 120 ? "..." : ""} 
+        </a> 
+        <p>${
+          typeof author == "string" && !author.includes("[", "{")
+            ? author
+            : "No author"
+        }</p>
       </div>
       <div class="newsImageContainer">
         <img  src='${urlToImage}' alt='News Image'>
