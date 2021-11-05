@@ -3,7 +3,9 @@
   --blueLight: #9bd1f9;
   --blueBackground: rgba(212, 237, 255, 0.6);
   --buttonHoverBg: #d4edff;
+  --hoverColor: whitesmoke;
   --lightGrey: rgb(230, 236, 240);
+  --lightBlack: #212529;
   --spacing: 15px;
   --greyText: rgb(101, 119, 134);
   --greyButtonText: rgba(0, 0, 0, 0.34);
@@ -17,7 +19,7 @@ html,
 body {
   height: 100%;
   min-height: 100%;
-  background-color: #fff;
+  background-color: white;
   font-weight: 300;
 }
 
@@ -79,7 +81,6 @@ nav,
 }
 
 .navRow i {
-  /* padding-right: 10px; */
   width: 50px;
 }
 
@@ -93,7 +94,7 @@ nav a {
   font-size: 30px;
   padding-right: 20px;
   padding-left: 20px;
-  color: #212529;
+  color: var(--lightBlack);
   position: relative;
   margin-top: 7.5px;
   margin-bottom: 7.5px;
@@ -104,23 +105,19 @@ nav a {
   font-size: 25px;
   color: white;
   position: relative;
-  background-color: #1fa2f1;
+  background-color: var(--blue);
   border-radius: 25px;
   width: 100%;
   margin-top: 10px;
 }
 
 .tweetButton:hover {
-  background-color: #9bd1f9;
+  background-color: var(--blueLight);
 }
 
 nav a:hover {
-  background-color: whitesmoke;
+  background-color: var(--hoverColor);
   border-radius: 25px;
-}
-
-nav a.blue {
-  color: var(--blue);
 }
 
 .navBottom {
@@ -149,7 +146,7 @@ nav a.blue {
   flex-direction: column;
   justify-content: space-evenly;
   height: 150px;
-  background-color: whitesmoke;
+  background-color: var(--hoverColor);
   border-radius: 20px;
   margin-top: 10px;
   padding-left: 20px;
@@ -171,7 +168,7 @@ nav a.blue {
 }
 
 .linkedInRow i {
-  color: #1fa2f1;
+  color: var(--blue);
 }
 
 .linkedInRow span,
@@ -207,10 +204,7 @@ button span {
   border-right: 1px solid var(--lightGrey);
   display: flex;
   flex-direction: column;
-  max-width: 800px;
-  /* flex: 1;
-  display: flex;
-  overflow: scroll; */
+  max-width: 900px;
 }
 
 .postsContainer {
@@ -261,7 +255,7 @@ button span {
 }
 
 .newsContainer {
-  background-color: whitesmoke;
+  background-color: var(--hoverColor);
   border-radius: 20px;
 }
 
@@ -279,7 +273,7 @@ button span {
 }
 
 .newsPostContainer:hover {
-  background-color: lightgray;
+  background-color: var(--lightGrey);
   border-radius: 20px;
 }
 
@@ -1001,4 +995,8 @@ button span {
 
 #notificationList .active {
   background-color: white;
+}
+
+.duckSVG {
+  height: 35px;
 }
