@@ -869,12 +869,11 @@ function createNewsHtml(data) {
     <div class="newsPostContainer">
       <div class="newsContent">
         <a href=${url} target="_blank">
-        ${title.slice(0, 120)}
-        ${title.length > 120 ? "..." : ""} 
+        ${title.slice(0, 200)} 
         </a> 
         <p>${
           typeof author == "string" && !author.includes("[", "{")
-            ? author
+            ? author.slice(0, 55)
             : "No author"
         }</p>
       </div>
