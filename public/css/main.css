@@ -1,7 +1,7 @@
 :root {
-  --blue: #1fa2f1;
-  --blueLight: #9bd1f9;
-  --blueBackground: rgba(212, 237, 255, 0.6);
+  --mainColor: #ffb347;
+  --mainColorLight: rgb(255, 203, 131);
+  --mainColorBackground: rgb(255, 203, 131, 0.3);
   --buttonHoverBg: #d4edff;
   --hoverColor: whitesmoke;
   --lightGrey: rgb(230, 236, 240);
@@ -105,14 +105,14 @@ nav a {
   font-size: 25px;
   color: white;
   position: relative;
-  background-color: var(--blue);
+  background-color: var(--mainColor);
   border-radius: 25px;
   width: 100%;
   margin-top: 10px;
 }
 
 .tweetButton:hover {
-  background-color: var(--blueLight);
+  background-color: var(--mainColorLight);
 }
 
 nav a:hover {
@@ -168,7 +168,7 @@ nav a:hover {
 }
 
 .linkedInRow i {
-  color: var(--blue);
+  color: #1fa2f1;
 }
 
 .linkedInRow span,
@@ -273,7 +273,7 @@ button span {
 }
 
 .newsPostContainer:hover {
-  background-color: var(--lightGrey);
+  background-color: lightgray;
   border-radius: 20px;
 }
 
@@ -299,7 +299,7 @@ button span {
   font-weight: 400px;
 }
 .newsContent p {
-  color: cornflowerblue;
+  color: cornflowermainColor;
   font-size: smaller;
 }
 
@@ -316,7 +316,7 @@ button span {
 }
 
 #submitPostButton {
-  background-color: var(--blue);
+  background-color: var(--mainColor);
   color: white;
   border: none;
   border-radius: 40px;
@@ -324,7 +324,7 @@ button span {
 }
 
 #submitPostButton:disabled {
-  background-color: var(--blueLight);
+  background-color: var(--mainColorLight);
 }
 
 .post {
@@ -387,7 +387,7 @@ button span {
 
 .postButtonContainer button:hover {
   background-color: #d4edff;
-  color: var(--blue);
+  color: var(--mainColor);
   border-radius: 50%;
 }
 
@@ -421,7 +421,7 @@ button span {
 }
 
 .replyFlag a {
-  color: var(--blue);
+  color: var(--mainColor);
 }
 
 .post.largeFont .postBody,
@@ -443,7 +443,7 @@ button span {
 
 .coverPhotoSection {
   height: 180px;
-  background-color: var(--blue);
+  background-color: var(--mainColor);
   position: relative;
 }
 
@@ -471,8 +471,8 @@ button span {
 
 .profileButton,
 .followButton {
-  border: 1px solid var(--blue);
-  color: var(--blue);
+  border: 1px solid var(--mainColor);
+  color: var(--mainColor);
   font-weight: bold;
   padding: 5px 15px;
   border-radius: 60px;
@@ -482,11 +482,12 @@ button span {
 
 .profileButton:hover,
 .followButton:hover {
-  background-color: var(--blueBackground);
+  background-color: var(--mainColorBackground);
+  color: var(--mainColor);
 }
 
 .followButton.following {
-  background-color: var(--blue);
+  background-color: var(--mainColor);
   color: #fff;
 }
 
@@ -530,13 +531,13 @@ button span {
 }
 
 .tab.active {
-  color: var(--blue);
-  border-bottom: 2px solid var(--blue);
+  color: var(--mainColor);
+  border-bottom: 2px solid var(--mainColor);
 }
 
 .tab:hover {
-  color: var(--blue);
-  background-color: var(--blueBackground);
+  color: var(--mainColor);
+  background-color: var(--mainColorBackground);
 }
 
 .noResults {
@@ -598,7 +599,7 @@ button span {
 }
 
 .pinButton.active {
-  color: var(--blue);
+  color: var(--mainColor);
 }
 
 .pinnedPostText {
@@ -661,7 +662,7 @@ button span {
 
 #createChatButton {
   border: none;
-  background-color: var(--blue);
+  background-color: var(--mainColor);
   color: #fff;
   padding: 7px 20px;
   margin: 10px auto;
@@ -789,7 +790,7 @@ button span {
 
 .chatContainer .footer button {
   background-color: transparent;
-  color: var(--blue);
+  color: var(--mainColor);
   font-size: 24px;
 }
 
@@ -881,7 +882,7 @@ button span {
 }
 
 .chatMessages .message.mine .messageBody {
-  background-color: var(--blue);
+  background-color: var(--mainColor);
   color: #fff;
 }
 
@@ -952,7 +953,7 @@ button span {
 }
 
 .resultListItem.active {
-  background-color: var(--blueBackground);
+  background-color: var(--mainColorBackground);
 }
 
 .resultListItem.notification * {
