@@ -4,13 +4,30 @@ body {
   background-color: black;
 }
 
+a {
+  color: cornflowerblue;
+  text-decoration: none;
+}
+
+h1 {
+  font-size: -webkit-xxx-large;
+  font-weight: 800;
+  color: silver;
+}
+
+h2 {
+  font-size: -webkit-large;
+  font-weight: 600;
+  color: silver;
+}
+
 .leftContent {
-  background-color: #ffb347;
+  background-color: #fe943b;
   background-image: url(https://www.graphicspic.com/wp-content/uploads/2020/05/GPP265_Background-scaled.jpg);
   background-size: cover;
-
   width: 55%;
 }
+
 .loginDuckSVG {
   display: block;
   margin-left: auto;
@@ -19,13 +36,21 @@ body {
   height: 350px;
 }
 
+.miniDuckSVG {
+  display: block;
+  height: 40px;
+}
+
 .wrapper {
   display: flex;
   flex-direction: row;
 }
 
 .rightContent {
-  padding: 10%;
+  width: 45%;
+  padding-top: 10%;
+  padding-bottom: 16%;
+  padding-left: 2%;
 }
 
 .loginContainer {
@@ -33,8 +58,6 @@ body {
   padding: 20px;
   width: 100%;
   max-width: 500px;
-  border: 1px solid #dedede;
-  background-color: #fff;
   text-align: center;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
@@ -58,7 +81,15 @@ input[type="password"] {
 }
 
 input[type="submit"] {
-  background-color: #0099ff;
+  background-color: #fe943b;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+input[type="submit"]:hover {
+  background-color: #fe851c;
   color: #fff;
   border: none;
   border-radius: 20px;
