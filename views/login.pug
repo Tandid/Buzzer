@@ -1,15 +1,16 @@
 extends layouts/login-layout.pug
 
 block content
-    img.miniDuckSVG(src="/svgs/loginDuck.svg")
-    .loginContainer
+    .rightContainerWrapper
+        img.miniDuckSVG(src="/svgs/duck.svg")
         h1 Happening Now
-        h2 Sign in to Quacker 
-        form(method="post")
+        h2 Sign in to Quacker.
+        .loginContainer
+            form(method="post")
 
-            p.errorMessage #{errorMessage}
+                p.errorMessage #{errorMessage}
         
-            input(type="text", name="logUsername", placeholder="Username or email", value=logUsername required="")
-            input(type="password", name="logPassword", placeholder="Password", required="")
-            input(type="submit", value="Login")
-        a(href="/register") Don't have an account? Sign up here.
+                input(type="text", name="logUsername", placeholder="Username or email", value=logUsername required="")
+                input(type="password", name="logPassword", placeholder="Password", required="")
+                input(type="submit", value="Login")
+            a(href="/register") Don't have an account? Sign up here.

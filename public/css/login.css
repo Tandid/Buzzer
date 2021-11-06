@@ -1,7 +1,8 @@
 html,
 body {
   min-height: 100%;
-  background-color: black;
+  background-color: white;
+  margin: 0;
 }
 
 a {
@@ -10,22 +11,23 @@ a {
 }
 
 h1 {
-  font-size: -webkit-xxx-large;
+  font-size: 100px;
   font-weight: 800;
-  color: silver;
+  color: black;
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
 
 h2 {
-  font-size: -webkit-large;
+  font-size: 50px;
   font-weight: 600;
-  color: silver;
+  color: black;
 }
 
 .leftContent {
   background-color: #fe943b;
   background-image: url(https://www.graphicspic.com/wp-content/uploads/2020/05/GPP265_Background-scaled.jpg);
   background-size: cover;
-  width: 55%;
 }
 
 .loginDuckSVG {
@@ -38,7 +40,7 @@ h2 {
 
 .miniDuckSVG {
   display: block;
-  height: 40px;
+  height: 50px;
 }
 
 .wrapper {
@@ -47,21 +49,21 @@ h2 {
 }
 
 .rightContent {
-  width: 45%;
   padding-top: 10%;
-  padding-bottom: 16%;
+
   padding-left: 2%;
 }
 
+/* .rightContainerWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: ce;
+} */
+
 .loginContainer {
-  border-radius: 20px;
-  padding: 20px;
   width: 100%;
-  max-width: 500px;
+  max-width: 400px;
   text-align: center;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 }
 
 form {
@@ -73,12 +75,12 @@ input[type="text"],
 input[type="email"],
 input[type="password"] {
   margin-bottom: 20px;
-  padding: 5px 20px;
+  padding: 10px 20px;
   border-radius: 2px;
-  border: 1px solid #dedede;
-  background-color: #f2f2f2;
+
+  background-color: white;
   border-radius: 20px;
-  border: 2px solid white;
+  border: 2px solid whitesmoke;
 }
 
 input[type="text"]:hover,
@@ -93,7 +95,8 @@ input[type="submit"] {
   border: none;
   border-radius: 20px;
   margin-bottom: 10px;
-  padding: 5px;
+  padding: 10px;
+  font-size: bolder;
 }
 
 input[type="submit"]:hover {

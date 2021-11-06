@@ -1,10 +1,10 @@
 extends layouts/login-layout.pug
 
 block content
-    img.miniDuckSVG(src="/svgs/loginDuck.svg")
+    img.miniDuckSVG(src="/svgs/duck.svg")
+    h1 Happening Now
+    h2 Join Quacker today.
     .loginContainer
-        h1 Happening Now
-        h2 Join Quacker today.
         form#registerForm(method="post", onsubmit="event.preventDefault(); validateForm()")
 
             p.errorMessage #{errorMessage}
