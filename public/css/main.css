@@ -180,13 +180,14 @@ nav a:hover {
   font-size: 14px;
 }
 
-.wrapper {
+.container {
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-width: 1600px;
 }
 
-.wrapper > .row {
+.container > .row {
   margin: 0;
   height: 100%;
 }
@@ -289,8 +290,8 @@ button span {
 }
 
 .newsImageContainer img {
-  width: 100px;
-  height: 90px;
+  width: 80px;
+  height: 70px;
   border-radius: 10px;
 }
 
@@ -321,6 +322,12 @@ button span {
   font-size: 19px;
 }
 
+.buttonsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 #submitPostButton {
   background-color: var(--mainColor);
   color: white;
@@ -331,6 +338,21 @@ button span {
 
 #submitPostButton:disabled {
   background-color: var(--mainColorLight);
+}
+
+#uploadPostImageButton {
+  color: var(--lightGrey);
+  border: none;
+  border-radius: 50px;
+  padding: 7px 15px;
+}
+
+#uploadPostImageButton i {
+  font-size: 25px;
+}
+
+#uploadPostImageButton:hover {
+  color: var(--mainColorLight);
 }
 
 .post {
@@ -433,6 +455,18 @@ button span {
 .post.largeFont .postBody,
 .post.largeFont .postFooter {
   font-size: 23px;
+}
+
+.postBody {
+  display: flex;
+  flex-direction: column;
+}
+
+.postImage {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 25px;
+  max-width: fit-content;
 }
 
 .postContentContainer .header {

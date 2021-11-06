@@ -4,7 +4,11 @@ mixin createPostForm(userLoggedIn)
             img(src=userLoggedIn.profilePic, alt="User's profile picture")
         .textareaContainer
             textarea#postTextarea(placeholder="What's happening?")
+            .uploadedImage
+            //- img.postImage(src=userLoggedIn.profilePic, alt="User's profile picture")
             .buttonsContainer
+                button#uploadPostImageButton
+                    i.fas.fa-image
                 button#submitPostButton(disabled="") Post
 
 mixin createReplyModal(userLoggedIn)
@@ -35,7 +39,7 @@ mixin createDeletePostModal()
                     button.close(type='button', data-dismiss='modal', aria-label='Close')
                     span(aria-hidden='true') &times;
                 .modal-body
-                    p You won't be able to delete this.
+                    p Are you sure you want to delete this post?
                 .modal-footer
                     button.btn.btn-secondary(type='button', data-dismiss='modal') Cancel
                     button#deletePostButton.btn.btn-primary(type='button') Delete

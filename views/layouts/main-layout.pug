@@ -14,7 +14,7 @@ html(lang="en")
     body
         script.
             let userLoggedIn = !{userLoggedInJs};
-        .wrapper
+        .container
             .row
                 nav.col-2
                     .navTop
@@ -75,14 +75,14 @@ html(lang="en")
                                 i.fas.fa-ellipsis-h
 
                 
-                .mainSectionContainer.col-10.col-md-8.col-lg-6
+                .mainSectionContainer.col-6
                     .titleContainer
                         h1 #{pageTitle}
                         block headerButton
 
                     block content
 
-                .exploreSectionContainer.col-4                   
+                .exploreSectionContainer.col-3                 
                     div
                         .searchWrapper
                             .searchBarContainer
@@ -100,12 +100,12 @@ html(lang="en")
                                 h1 Who to Follow
                                 .linkedInRow
                                     i.fab.fa-linkedin 
-                                    span https://www.linkedin.com/in/tandidalam/
+                                    span linkedin.com/tandidalam
                                     .followButtonContainer
                                         a.followButton(href="https://www.linkedin.com/in/tandidalam/" target="_blank") Follow
                                 .gitHubRow        
                                     i.fab.fa-github 
-                                    span https://github.com/Tandid
+                                    span github.com/Tandid
                                     .followButtonContainer 
                                         a.followButton(href="https://github.com/Tandid" target="_blank") Follow 
                     

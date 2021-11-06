@@ -220,6 +220,11 @@ $("#imageUploadButton").click(() => {
   });
 });
 
+$("#uploadPostImageButton").click((ev) => {
+  console.log(ev);
+  $(".uploadedImage").append("<span>Uploaded Image here.</span>");
+});
+
 $("#coverPhotoButton").click(() => {
   let canvas = cropper.getCroppedCanvas();
 
@@ -475,6 +480,7 @@ function createPostHtml(postData, largeFont = false) {
                         ${replyFlag}
                         <div class='postBody'>
                             <span>${postData.content}</span>
+                            <img class="postImage" src=${postData.imageUrl}>
                         </div>
                         <div class='postFooter'>
                             <div class='postButtonContainer'>
@@ -751,7 +757,9 @@ function outputNotificationList(notifications, container) {
   });
 
   if (notifications.length == 0) {
-    container.append("<span class='noResults'>Nothing to show.</span>");
+    container.append(
+      "<span class='noResults'> There are no notifications to show.</span>"
+    );
   }
 }
 
