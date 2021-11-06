@@ -7,9 +7,11 @@ mixin createPostForm(userLoggedIn)
             .uploadedImage
             //- img.postImage(src=userLoggedIn.profilePic, alt="User's profile picture")
             .buttonsContainer
-                button#uploadPostImageButton
+                button#uploadPostImageButton(data-toggle="modal", data-target="#postImageUploadModal")
                     i.fas.fa-image
                 button#submitPostButton(disabled="") Post
+
+    +createPostImageUploadModal(userLoggedIn)
 
 mixin createReplyModal(userLoggedIn)
     #replyModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='replyModalLabel', aria-hidden='true')
@@ -76,6 +78,23 @@ mixin createImageUploadModal()
                 .modal-footer
                     button.btn.btn-secondary(type='button', data-dismiss='modal') Cancel
                     button#imageUploadButton.btn.btn-primary(type='button') Save
+
+mixin createPostImageUploadModal()
+    #postImageUploadModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='postImageUploadModalLabel', aria-hidden='true')
+        .modal-dialog(role='document')
+            .modal-content
+                .modal-header
+                    h5#postImageUploadModalLabel.modal-title Upload a picture
+                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                    span(aria-hidden='true') &times;
+                .modal-body
+                    input#postPhoto(type="file", name="filePhoto")
+
+                    .imagePreviewContainer
+                        img#postImagePreview
+                .modal-footer
+                    button.btn.btn-secondary(type='button', data-dismiss='modal') Cancel
+                    button#postImageUploadButton.btn.btn-primary(type='button') Save
 
 mixin createCoverPhotoUploadModal()
     #coverPhotoUploadModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='coverPhotoModalLabel', aria-hidden='true')
