@@ -1,4 +1,4 @@
-<img align="left" src="https://github.com/Tandid/Quacker-TwitterClone/blob/main/public/svgs/duck.svg" width=150px>
+<img align="left" src="https://github.com/Tandid/Quacker-TwitterClone/blob/main/public/svgs/duck.svg" width=100px>
 https://quacker.herokuapp.com/ is a Twitter Clone
 
 <br/>
