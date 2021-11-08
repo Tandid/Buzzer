@@ -1,8 +1,21 @@
 html,
 body {
-  min-height: 100%;
-  background-color: white;
   margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  height: 100%;
+  width: 100%;
 }
 
 a {
@@ -11,15 +24,15 @@ a {
 }
 
 h1 {
-  font-size: 100px;
-  font-weight: 800;
+  font-size: 70px;
+  font-weight: 700;
   color: black;
   padding-top: 60px;
   padding-bottom: 60px;
 }
 
 h2 {
-  font-size: 50px;
+  font-size: 40px;
   font-weight: 600;
   color: black;
 }
@@ -28,37 +41,28 @@ h2 {
   background-color: #fe943b;
   background-image: url(https://www.graphicspic.com/wp-content/uploads/2020/05/GPP265_Background-scaled.jpg);
   background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.loginDuckSVG {
+.mainDuckSVG {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 15%;
   height: 350px;
 }
 
-.miniDuckSVG {
+.secondaryDuckSVG {
   display: block;
-  height: 50px;
-}
-
-.wrapper {
-  display: flex;
-  flex-direction: row;
+  height: 45px;
 }
 
 .rightContent {
-  padding-top: 10%;
+  display: flex;
+
+  align-items: center;
 
   padding-left: 2%;
 }
-
-/* .rightContainerWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: ce;
-} */
 
 .loginContainer {
   width: 100%;
