@@ -44,6 +44,8 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .mainDuckSVG {
