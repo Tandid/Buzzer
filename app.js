@@ -27,6 +27,10 @@ app.use(
   })
 );
 
+// if (process.env.NODE_ENV === "production") {
+//   app.use;
+// }
+
 // Routes
 const loginRoute = require("./routes/loginRoutes");
 const logoutRoute = require("./routes/logout");
