@@ -39,7 +39,7 @@ h2 {
 
 .leftContent {
   background-color: #fe943b;
-  background-image: url(https://www.graphicspic.com/wp-content/uploads/2020/05/GPP265_Background-scaled.jpg);
+  background-image: url("../images/background.png");
   background-size: cover;
   display: flex;
   justify-content: center;
