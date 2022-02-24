@@ -3,7 +3,7 @@ mixin createPostForm(userLoggedIn)
         .userImageContainer
             img(src=userLoggedIn.profilePic, alt="User's profile picture")
         .textareaContainer
-            textarea#postTextarea(placeholder="What's happening?")
+            textarea#postTextarea(placeholder="What's buzzing?")
             .uploadedImage
             //- img.postImage(src=userLoggedIn.profilePic, alt="User's profile picture")
             .buttonsContainer
@@ -27,7 +27,7 @@ mixin createReplyModal(userLoggedIn)
                         .userImageContainer
                             img(src=userLoggedIn.profilePic, alt="User's profile picture")
                         .textareaContainer
-                            textarea#replyTextarea(placeholder="What's happening?")
+                            textarea#replyTextarea(placeholder="What's buzzing?")
                 .modal-footer
                     button.btn.btn-secondary(type='button', data-dismiss='modal') Close
                     button#submitReplyButton.btn.btn-primary(type='button', disabled="") Reply
