@@ -6,11 +6,18 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(name="description" content="Buzzer")
+        meta(name="title" property="og:title" content="Buzzer")
+        meta(property="og:type" content="Website")
+        meta(name="image" property="og:image" content="https://live.staticflickr.com/65535/51911583019_b38a31b9d5_k.jpg" )
+        meta(name="description" property="og:description" content="Twitter Clone")
+        meta(name="author" content="Tandid Alam" )
         title #{pageTitle}
         link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.9/cropper.min.css')
         link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css', integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh', crossorigin='anonymous')
         link(rel="stylesheet", href="/css/main.css")
         link(rel="icon" type="image/svg+xml" href="/svgs/duck.svg")
+
     body
         script.
             let userLoggedIn = !{userLoggedInJs};
