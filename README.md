@@ -1,5 +1,5 @@
 <img align="left" src="https://github.com/Tandid/Quacker-TwitterClone/blob/main/public/svgs/duck.svg" width=100px>
-https://quacker-twitterclone.herokuapp.com/ is a social media app that mimics Twitter's layouts and features. Users can check out the latest news, follow others, and chat with eachother real time!
+https://buzzer-twitterclone.herokuapp.com/ is a social media app that mimics Twitter's layouts and features. Users can check out the latest news, follow others, and chat with eachother real time!
 
 <br/>
 
