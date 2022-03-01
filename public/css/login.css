@@ -113,7 +113,7 @@ input[type="submit"]:hover {
   margin-bottom: 10px;
 }
 
-.demoLogin {
+.demoLoginButton {
   background-color: #fe943b;
   color: #fff;
   border: none;
@@ -123,7 +123,7 @@ input[type="submit"]:hover {
   font-size: bolder;
 }
 
-.demoLogin:hover {
+.demoLoginButton:hover {
   background-color: #fe851c;
   color: #fff;
   border: none;

@@ -3,7 +3,6 @@ $(".demoLoginButton").click(() => {
 });
 
 function autoCompleteLogin() {
-  //   $(".usernameInput").val()="tandid.alam@gmail.com"
-  //   $(".passwordInput").val()="Duck123"
-  console.log("Hello");
+  $(".usernameInput").val("DemoLogin@gmail.com");
+  $(".passwordInput").val("password");
 }
