@@ -7,6 +7,12 @@ https://buzzer-twitterclone.herokuapp.com/ is a social media app that mimics Twi
 
 Buzzer was implemented using Javascript, Node, Express, MongoDB, Bootstrap
 
+## How to Run Locally
+
+-   Install all dependencies using `npm install`
+
+-   Start the production environment using `npm start`
+
 ## Key Features
 
 - Users have the option to sign up for an account or login using Demo Accounts. In the home page, users can create, like, pin, and comment on posts as well as repost those who they are following. They can search for users as well as posts in the Explore Section.
